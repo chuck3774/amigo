@@ -9,7 +9,9 @@ const users = [
   {userName: 'Sunny', firstName: 'Kevin', lastName: 'Quinn', password: 'turkey', friends: ['chuck3774', 'Hunterontherun', 'captainZhenya', 'NickShips'], restaurantsHasBeenTo: ['Sherpas', 'The Bumbling Bee']},
   {userName: 'Hunterontherun', firstName: 'Hunter', lastName: 'Schroer', password: 'turkey', friends: ['Sunny', 'chuck3774', 'captainZhenya', 'NickShips'], restaurantsHasBeenTo: ['Sherpas', 'The Bumbling Bee']},
   {userName: 'captainZhenya', firstName: 'Zhenya', lastName: 'Cotita', password: 'turkey', friends: ['Sunny', 'chuck3774', 'Hunterontherun', 'NickShips'], restaurantsHasBeenTo: ['Sherpas', 'The Bumbling Bee', 'Mountain Sun']},
-  {userName: 'NickShips', firstName: 'Nick', lastName: 'Barcos', password: 'turkey', friends: ['Sunny', 'chuck3774', 'Hunterontherun', 'captainZhenya'], restaurantsHasBeenTo: ['Sherpas', 'The Bumbling Bee', 'Mountain Sun']}
+  {userName: 'NickShips', firstName: 'Nick', lastName: 'Barcos', password: 'turkey', friends: ['Sunny', 'chuck3774', 'Hunterontherun', 'captainZhenya'], restaurantsHasBeenTo: ['Sherpas', 'The Bumbling Bee', 'Mountain Sun']},
+  {userName: 'IamtheWalrus', firstName: 'John', lastName: 'Lennon', password: 'turkey', friends: ['Sunny', 'chuck3774', 'Hunterontherun', 'captainZhenya'], restaurantsHasBeenTo: ['Sherpas', 'The Bumbling Bee', 'Mountain Sun']},
+  {userName: 'weirDancing', firstName: 'Bob', lastName: 'Weir', password: 'turkey', friends: ['Sunny', 'chuck3774', 'Hunterontherun', 'captainZhenya'], restaurantsHasBeenTo: ['Sherpas', 'The Bumbling Bee', 'Mountain Sun']}
 ];
 
 const restaurants = [
@@ -26,9 +28,12 @@ const logins = {
   isLoggedIn: true, userName: 'chuck3774'
 };
 
-const notifications = {
-   recommendation: 'Mountain Sun', join: 'Mountain Sun', toUser: 'chuck3774', fromUser: 'Sunny'
-};
+const notifications = [{
+   recommendation: 'Mountain Sun', join: '', toUser: 'chuck3774', fromUser: 'Sunny'
+},
+{
+  recommendation: '', join: 'The Bumbling Bee', toUser: 'chuck3774', fromUser: 'captainZhenya'
+}];
 
 db.Group.create(groups)
 .then(() => {

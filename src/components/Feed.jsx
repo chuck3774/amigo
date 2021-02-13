@@ -49,7 +49,6 @@ const Feed = (props) => {
     })
     axios.post('/signals', signal)
     .then((data) => {
-      console.log(data.data)
       if (typeof data.data !== 'string') {
         props.updateSignals(data.data);
         handleClose();
