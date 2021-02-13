@@ -174,6 +174,28 @@ app.post('/newGroup', (req, res) => {
   })
 })
 
+app.delete('/joinRequest/:id', (req, res) => {
+  let id = req.params.id;
+  db.Notification.findByIdAndDelete(id)
+  .then((data) => {
+    res.status(200).json(data);
+  })
+  .catch((error) => {
+    res.status(404).json(error);
+  })
+})
+
+app.delete('/recRequest/:id', (req, res) => {
+  let id = req.params.id;
+  db.Notification.findByIdAndDelete(id)
+  .then((data) => {
+    res.status(200).json(data);
+  })
+  .catch((error) => {
+    res.status(404).json(error);
+  })
+})
+
 const PORT = 3001;
 
 app.listen(PORT, () => {
