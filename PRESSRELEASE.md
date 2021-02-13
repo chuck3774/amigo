@@ -1,6 +1,6 @@
 Amigo
 
-An app for anyone needing recommendations for what to get at a restaurant from friends!
+When you're on the go to a restaurant get some recommendations from friends first to help you out!
 
 This app is for when you are about to go to a restaurant and want some recommendations from your free because you never now what to get
 at a restaurant or just want to check something new out!  Keep track of your recommendations for each restaurant and invite some of your friends along to!
