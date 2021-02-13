@@ -29,6 +29,7 @@
     "jquery": "^3.5.1",
     "mongoose": "^5.11.11",
     "mysql": "^2.18.1",
+    "rc-checkbox": "^2.3.2",
     "react": "^16.14.0",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^16.13.1",
