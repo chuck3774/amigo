@@ -15,6 +15,7 @@ const Friends = (props) => {
   const handleClose2 = () => {
     setShow2(false);
     setList('Group members: ');
+    setGroup([]);
   }
   const handleShow2 = () => setShow2(true);
   const friendClick = (e) => {
@@ -87,7 +88,7 @@ props.allUsers.map((allUser) => {
 })
 
 return (
-  <div className="feed">
+  <div className="friends">
     <h2>Your Friends</h2>
     <Button variant='primary' onClick={handleShow}>Add a friend</Button>
     <Button variant='primary' onClick={handleShow2}>Add a group</Button>

@@ -12,7 +12,7 @@ import axios from 'axios';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {view: 'feed', usersInfo: '', signals: [], allUsers: [], restaurants: [], groups: [], loginInfo: {id: '60282871a9ac708cf0dfba31', isLoggedIn: true, userName: 'chuck3774'}};
+    this.state = {view: 'feed', usersInfo: '', signals: [], allUsers: [], restaurants: [], groups: [], loginInfo: {id: '60284cb1d3a4ad9131ca430c', isLoggedIn: true, userName: 'chuck3774'}};
   }
 
   componentDidMount () {
@@ -79,6 +79,17 @@ class App extends React.Component {
 
   }
 
+  deleteNotification(note) {
+    let notes = this.state.notifications;
+    let newNotes = [];
+    notes.map((noteObj) => {
+      if (noteObj._id !== note._id) {
+        newNotes.push(noteObj);
+      }
+    })
+    this.setState({notifications: newNotes})
+  }
+
   changeView(e) {
     const newView = e.target.name;
     this.setState({view: newView})
@@ -89,7 +100,9 @@ class App extends React.Component {
 
     if (view === 'feed') {
       return <Feed
-      signals={this.state.signals} restaurants={this.state.restaurants} groups={this.state.groups}
+      signals={this.state.signals}
+      restaurants={this.state.restaurants}
+      groups={this.state.groups}
       friends={this.state.usersInfo}
       updateSignals={this.updateSignals.bind(this)}/>;
   } else if (view === 'friends') {
@@ -102,7 +115,10 @@ class App extends React.Component {
     updateGroups={this.updateGroups.bind(this)}
     />
   } else if (view === 'notifications') {
-    return <Notifications />
+    return <Notifications
+    notifications={this.state.notifications}
+    deleteNotification={this.deleteNotification.bind(this)}
+    />
   }
 }
 
