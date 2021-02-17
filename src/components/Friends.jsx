@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import { Accordion, Button, Card, Row, Modal, Form, ListGroup } from 'react-bootstrap';
+import { Accordion, Button, Card, Row, Modal, Form, ListGroup, Container, Col } from 'react-bootstrap';
 import axios from 'axios';
-import checkbox from 'rc-checkbox';
 
 const Friends = (props) => {
   const [show, setShow] = useState(false);
@@ -89,9 +88,38 @@ props.allUsers.map((allUser) => {
 
 return (
   <div className="friends">
-    <h2>Your Friends</h2>
-    <Button variant='primary' onClick={handleShow}>Add a friend</Button>
-    <Button variant='primary' onClick={handleShow2}>Add a group</Button>
+    <Container>
+<Row>
+  <Col xs={4}>
+
+  </Col>
+  <Col xs={8}>
+
+    <Button variant='primary' onClick={handleShow}
+     style={{
+      marginTop: '20px',
+      marginBottom: '10px',
+      backgroundColor: '#A11100',
+      borderWidth: '3px',
+      borderColor: '#E9A637'
+    }}
+    >Add a friend</Button>
+    <Button variant='primary' onClick={handleShow2}
+     style={{
+      marginTop: '20px',
+      marginBottom: '10px',
+      backgroundColor: '#A11100',
+      borderWidth: '3px',
+      borderColor: '#E9A637',
+      marginLeft: '20px'
+    }}
+    >Add a group</Button>
+  </Col>
+  <Col xs={2}></Col>
+
+</Row>
+
+    </Container>
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add a friend</Modal.Title>
@@ -110,7 +138,15 @@ return (
             </Form.Control>
           </Form.Group>
 
-          <Button variant="primary" onClick={(e) => submit(e)}>Add new friend!</Button>
+          <Button variant="primary" onClick={(e) => submit(e)}
+          style={{
+            backgroundColor: '#A11100',
+            borderWidth: '3px',
+            borderColor: '#E9A637',
+            marginLeft: '170px',
+            marginBottom: '10px'
+          }}
+          >Add new friend!</Button>
         </Form>
       </Modal>
       <Modal show={show2} onHide={handleClose2}>
@@ -131,37 +167,92 @@ return (
           }
           </ListGroup>
 
-          <Button variant="primary" onClick={(e) => submit2(e)}>Add new group!</Button>
+          <Button variant="primary" onClick={(e) => submit2(e)}
+             style={{
+              backgroundColor: '#A11100',
+              borderWidth: '3px',
+              borderColor: '#E9A637'
+            }}
+          >Add new group!</Button>
       </Modal>
 
 
-        <Card style={{width: '30rem'}}>
+        <Card style={{
+          borderColor: '#A11100',
+          marginLeft: '400px',
+          width: '22rem'}}>
           <Card.Body>
             <Row>
               <Accordion>
-                <Accordion.Toggle as={Button} varian="link" eventKey="0">
+                <Accordion.Toggle as={Button} varian="link" eventKey="0"
+                style={{
+                  marginLeft: "50px",
+                  backgroundColor: '#E9A637',
+                   borderWidth: '3px',
+                   borderColor: '#A11100'
+                  }}
+                >
                  Friends
                 </Accordion.Toggle>
 
                 {props.friends[0] ? props.friends[0].friends.map((friendObj) => {
                   return <Accordion.Collapse eventKey="0">
-                    <div>{friendObj}</div>
+                    <Card style={{
+                      marginLeft: '40px',
+                      width: '160px'
+                       }}>
+                      <Card.Body style={{color: '#A11100'}}>
+                      {friendObj}
+
+                      </Card.Body>
+                      </Card>
                   </Accordion.Collapse>
                 }) : <Accordion.Collapse eventKey="0">
-                  <div>No friends yet!</div>
+                   <Card style={{
+                      marginLeft: '40px',
+                      width: '160px'
+                       }}>
+                      <Card.Body style={{color: '#A11100'}}>
+                      No friends yet!
+
+                      </Card.Body>
+                      </Card>
                   </Accordion.Collapse>}
               </Accordion>
               <Accordion>
-                <Accordion.Toggle as={Button} varian="link" eventKey="1">
+                <Accordion.Toggle as={Button} varian="link" eventKey="1"
+                style={{
+                  marginLeft: "60px",
+                  backgroundColor: '#E9A637',
+                   borderWidth: '3px',
+                   borderColor: '#A11100'
+                  }}
+                >
                   Groups
                 </Accordion.Toggle>
 
                 {props.groups[0] ? props.groups.map((groupObj) => {
                   return <Accordion.Collapse eventKey="1">
-                    <div>{groupObj.groupName}</div>
+                   <Card style={{
+                      marginLeft: '40px',
+                      width: '160px'
+                       }}>
+                      <Card.Body style={{color: '#A11100'}}>
+                      {groupObj.groupName}
+
+                      </Card.Body>
+                      </Card>
                   </Accordion.Collapse>
                 }) : <Accordion.Collapse eventKey="1">
-                  <div>No groups yet!</div>
+                  <Card style={{
+                      marginLeft: '40px',
+                      width: '160px'
+                       }}>
+                      <Card.Body style={{color: '#A11100'}}>
+                      No groups yet!
+
+                      </Card.Body>
+                      </Card>
                   </Accordion.Collapse>}
               </Accordion>
            </Row>

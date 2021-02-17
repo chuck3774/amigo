@@ -44,7 +44,6 @@ const Notifications = (props) => {
   }
   return (
     <div className="notifications">
-      <h2>Your Notifications</h2>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Want to join?</Modal.Title>
@@ -58,26 +57,49 @@ const Notifications = (props) => {
             </Form.Control>
           </Form.Group>
 
-          <Button variant="primary" onClick={(e) => submit(e)}>Send Response!</Button>
+          <Button variant="primary" onClick={(e) => submit(e)}
+            style={{
+              marginLeft: '145px',
+             marginTop: '20px',
+             marginBottom: '10px',
+             backgroundColor: '#A11100',
+             borderWidth: '3px',
+             borderColor: '#E9A637'
+           }}
+          >Send Response!</Button>
         </Form>
       </Modal>
       <Modal show={show2} onHide={handleClose2}>
         <Form>
         <Modal.Header closeButton>
-        <Modal.Title>Recommendations</Modal.Title>
+        <Modal.Title>Recommendation</Modal.Title>
         </Modal.Header>
         <Form.Group>
        <Form.Control type="text" placeholder="Enter here..." />
        </Form.Group>
 
 
-          <Button variant="primary" onClick={(e) => submit2(e)}>Send Recommendation!</Button>
+          <Button variant="primary" onClick={(e) => submit2(e)}
+             style={{
+               marginLeft: '145px',
+              marginTop: '20px',
+              marginBottom: '10px',
+              backgroundColor: '#A11100',
+              borderWidth: '3px',
+              borderColor: '#E9A637'
+            }}
+          >Send Recommendation!</Button>
 
         </Form>
       </Modal>
 
 
-          <Card style={{width: '50rem'}}>
+          <Card style={{
+            marginTop: '20px',
+            width: '50rem',
+            borderColor: '#A11100',
+            marginLeft: '230px'
+            }}>
             <Card.Body>
           <ListGroup>
 
@@ -85,11 +107,31 @@ const Notifications = (props) => {
           props.notifications.map((notObj) => {
             return (
               notObj.recommendation === '' ?
-                <ListGroup.Item>{`@${notObj.fromUser} would like you to join them at ${notObj.join}!`}
-                 <Button variant='primary' onClick={handleShow}>Respond</Button>
+                <ListGroup.Item style={{
+                  borderColor: '#E9A637',
+                  color: '#A11100'
+                  }}>{`@${notObj.fromUser} would like you to join them at ${notObj.join}!`}
+                 <Button variant='primary' onClick={handleShow}
+                 style={{
+                  backgroundColor: '#E9A637',
+                  borderWidth: '3px',
+                  borderColor: '#A11100',
+                  float: 'right'
+               }}
+                 >Respond</Button>
                 </ListGroup.Item> :
-                <ListGroup.Item>{`@${notObj.fromUser} would like recommendations for ${notObj.recommendation}!`}
-                <Button variant='primary' onClick={handleShow2}>Respond</Button>
+                <ListGroup.Item style={{
+                  borderColor: '#E9A637',
+                  color: '#A11100'
+                  }}>{`@${notObj.fromUser} would like recommendations for ${notObj.recommendation}!`}
+                <Button variant='primary' onClick={handleShow2}
+                style={{
+                  backgroundColor: '#E9A637',
+                  borderWidth: '3px',
+                  borderColor: '#A11100',
+                 marginLeft: '130px'
+               }}
+                >Respond</Button>
                 </ListGroup.Item>
 
             )
