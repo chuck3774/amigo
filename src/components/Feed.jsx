@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Accordion, Button, Card, Row, Modal, Form } from 'react-bootstrap';
+import { Accordion, Button, Card, Row, Modal, Form, Container, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 const Feed = (props) => {
@@ -63,8 +63,24 @@ const Feed = (props) => {
 
 return (
   <div className="feed">
-    <h2>Your Signals</h2>
-    <Button variant='primary' onClick={handleShow}>Create Signal</Button>
+    <Container>
+      <Row>
+    <Col xs={5}></Col>
+    <Col xs={7}>
+
+    <Button
+    style={{
+      marginTop: '20px',
+      marginBottom: '10px',
+      backgroundColor: '#A11100',
+      borderWidth: '3px',
+      borderColor: '#E9A637'
+    }}
+    variant='primary' onClick={handleShow}>Create Signal</Button>
+    </Col>
+    <Col xs={2}></Col>
+      </Row>
+    </Container>
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Create a Signal</Modal.Title>
@@ -102,40 +118,99 @@ return (
              <option>No</option>
             </Form.Control>
           </Form.Group>
-          <Button variant="primary" onClick={(e) => submit(e)}>Amigos Unite!</Button>
+
+          <img
+          className="modalButton"
+           onClick={(e) => submit(e)}
+         src="https://chuck3774bucket.s3.us-east-2.amazonaws.com/Screen+Shot+2021-02-16+at+1.01.29+PM.png"/>
+
+
         </Form>
       </Modal>
-    <div>{
+
+      <Container>
+        <Col>
+
+      {
       props.signals.map((signalObj, i) => {
         return (
-        <Card style={{width: '30rem'}}>
+        <Card style={{
+          borderColor: '#A11100',
+          marginLeft: '210px',
+          width: '30rem'}}>
           <Card.Body>
-            <Card.Title key={i}>{signalObj.signal}</Card.Title>
+            <Card.Title style={{
+              textAlign: 'center',
+              textDecoration: 'underline',
+              color: '#A11100'
+              }} key={i}>{signalObj.signal}</Card.Title>
             <Row>
               <Accordion>
-                <Accordion.Toggle as={Button} varian="link" eventKey="0">
+                <Accordion.Toggle as={Button} varian="link" eventKey="0" style={{
+                  marginLeft: "30px",
+                  backgroundColor: '#E9A637',
+                   borderWidth: '3px',
+                   borderColor: '#A11100'
+                  }}>
                   Recommendations
                 </Accordion.Toggle>
 
                 {signalObj.recommendations[0] ? signalObj.recommendations.map((recObj) => {
                   return <Accordion.Collapse eventKey="0">
-                    <div>{recObj}</div>
+                    <Card style={{
+                      marginLeft: '40px',
+                      width: '150px'
+                       }}>
+                      <Card.Body style={{color: '#A11100'}}>
+                      {recObj}
+
+                      </Card.Body>
+                      </Card>
                   </Accordion.Collapse>
                 }) : <Accordion.Collapse eventKey="0">
-                  <div>Nothing yet!</div>
+                  <Card style={{
+                      marginLeft: '40px',
+                      width: '150px'
+                       }}>
+                      <Card.Body style={{color: '#A11100'}}>
+                      Nothing yet!
+
+                      </Card.Body>
+                      </Card>
                   </Accordion.Collapse>}
               </Accordion>
               <Accordion>
-                <Accordion.Toggle as={Button} varian="link" eventKey="1">
+                <Accordion.Toggle as={Button} varian="link" eventKey="1" style={{
+                   backgroundColor: '#E9A637',
+                   borderWidth: '3px',
+                   borderColor: '#A11100',
+                  marginLeft: '50px'
+                }}>
                   Friends who'd like to join
                 </Accordion.Toggle>
 
                 {signalObj.join[0] ? signalObj.join.map((joinObj) => {
                   return <Accordion.Collapse eventKey="1">
-                    <div>{joinObj}</div>
+                     <Card style={{
+                      marginLeft: '80px',
+                      width: '150px'
+                       }}>
+                      <Card.Body style={{color: '#A11100'}}>
+                      {joinObj}
+
+                      </Card.Body>
+                      </Card>
                   </Accordion.Collapse>
                 }) : <Accordion.Collapse eventKey="1">
-                  <div>No one yet!</div>
+                   <Card style={{
+                      marginLeft: '80px',
+                      width: '150px'
+                       }}>
+                      <Card.Body style={{color: '#A11100'}}>
+                      No one yet!
+
+                      </Card.Body>
+                      </Card>
                   </Accordion.Collapse>}
               </Accordion>
            </Row>
@@ -144,7 +219,11 @@ return (
 
         )
       })
-      }</div>
+      }
+        </Col>
+
+      </Container>
+
 
   </div>
 )

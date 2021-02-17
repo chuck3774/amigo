@@ -4,7 +4,7 @@ import React from 'react';
 import Feed from './components/Feed.jsx';
 import Friends from './components/Friends.jsx';
 import Notifications from './components/Notifications.jsx';
-import { Accordion, Button, Navbar, Nav, DropdownButton } from 'react-bootstrap';
+import { Accordion, Button, Navbar, Nav, DropdownButton, Container, Row, Col } from 'react-bootstrap';
 import './style.css';
 import axios from 'axios';
 
@@ -12,7 +12,7 @@ import axios from 'axios';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {view: 'feed', usersInfo: '', signals: [], allUsers: [], restaurants: [], groups: [], loginInfo: {id: '60284cb1d3a4ad9131ca430c', isLoggedIn: true, userName: 'chuck3774'}};
+    this.state = {view: 'feed', usersInfo: '', signals: [], allUsers: [], restaurants: [], groups: [], loginInfo: {id: '602c618fecdc80e93597bc30', isLoggedIn: true, userName: 'chuck3774'}};
   }
 
   componentDidMount () {
@@ -127,66 +127,56 @@ class App extends React.Component {
   render() {
     return (
       <div className="page">
-        <div className="header">
-        <Navbar bg="light" expand="lg">
-  <Navbar.Brand href="#home">Amigo!</Navbar.Brand>
-  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-  <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="mr-auto">
-    <Nav.Link style={{width: '80px'}}
-        name="feed"
-        onClick={(e) => this.changeView(e)}>Feed</Nav.Link>
-      <Nav.Link style={{width: '100px'}}
-        name="friends"
-        onClick={(e) => this.changeView(e)}>Friends</Nav.Link>
-      <Nav.Link style={{width: '120px'}}
-        name="notifications"
-        onClick={(e) => this.changeView(e)}>Notifications</Nav.Link>
-    <DropdownButton id="dropdown-basic-button" title="☰">
-    <Nav.Link style={{width: '80px'}}
-        name="feed"
-        onClick={(e) => this.changeView(e)}>Feed</Nav.Link>
-      <Nav.Link style={{width: '100px'}}
-        name="friends"
-        onClick={(e) => this.changeView(e)}>Friends</Nav.Link>
-      <Nav.Link style={{width: '120px'}}
-        name="notifications"
-        onClick={(e) => this.changeView(e)}>Notifications</Nav.Link>
-</DropdownButton>
+        <Container>
+          <Row>
+        <Col sm={3}>
+        </Col>
+        <Col sm={8}>
+        <img className="logo" src="https://chuck3774bucket.s3.us-east-2.amazonaws.com/2.png"/>
+         </Col>
+        <Col sm={2}>
+        </Col>
+          </Row>
+       </Container>
 
-    </Nav>
-  </Navbar.Collapse>
-</Navbar>
-          <h1>Amigo!</h1>
-        <Accordion>
-          <Accordion.Toggle
-          style={{width: '120px'}}
-          as={Button}
-          variant="link"
-          eventKey="0">
-          ☰
-          </Accordion.Toggle>
-          <Accordion.Collapse eventKey="0">
-          <Button
-        style={{width: '120px'}}
+          <div className="header">
+
+          <Nav
+          style={{
+            backgroundColor: '#E9A637',
+            borderRadius: '5px',
+            borderColor: '#A11100',
+          }}
+          className="justify-content-center">
+    <Nav.Link
+       style={{
+           color: '#A11100'
+       }}
         name="feed"
-        onClick={(e) => this.changeView(e)}
-        >Feed</Button>
-          </Accordion.Collapse>
-          <Accordion.Collapse eventKey="0">
-          <Button
-        style={{width: '120px'}}
+        onClick={(e) => this.changeView(e)}>Feed</Nav.Link>
+      <Nav.Link
+      style={{
+        color: '#A11100'
+    }}
         name="friends"
-        onClick={(e) => this.changeView(e)}>Friends </Button>
-        </Accordion.Collapse>
-        <Accordion.Collapse eventKey="0">
-        <Button
-        style={{width: '120px'}}
+        onClick={(e) => this.changeView(e)}>Friends</Nav.Link>
+      <Nav.Link
+      style={{
+        color: '#A11100'
+    }}
         name="notifications"
-        onClick={(e) => this.changeView(e)}>Notifications</Button>
-        </Accordion.Collapse>
-        </Accordion>
-         </div>
+        onClick={(e) => this.changeView(e)}>Notifications</Nav.Link>
+       </Nav>
+
+
+
+
+
+
+
+
+</div>
+
       <div className="main">
       {this.renderView()}
       </div>
