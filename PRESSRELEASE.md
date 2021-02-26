@@ -2,7 +2,7 @@ Amigo
 
 When you're on the go to a restaurant get some recommendations from friends first to help you out!
 
-This app is for when you are about to go to a restaurant and want some recommendations from your free because you never now what to get
+This app is for when you are about to go to a restaurant and want some recommendations from your friends because you never now what to get
 at a restaurant or just want to check something new out!  Keep track of your recommendations for each restaurant and invite some of your friends along to!
 
 Problem: 
