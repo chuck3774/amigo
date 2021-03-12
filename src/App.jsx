@@ -12,7 +12,7 @@ import axios from 'axios';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {view: 'feed', usersInfo: '', signals: [], allUsers: [], restaurants: [], groups: [], loginInfo: {id: '602c618fecdc80e93597bc30', isLoggedIn: true, userName: 'chuck3774'}};
+    this.state = {view: 'feed', usersInfo: '', signals: [], allUsers: [], restaurants: [], groups: [], loginInfo: {id: '6031b0ac7540166764d399d7', isLoggedIn: true, userName: 'chuck3774'}};
   }
 
   componentDidMount () {
@@ -126,20 +126,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="page">
         <Container>
           <Row>
-        <Col sm={3}>
-        </Col>
-        <Col sm={8}>
-        <img className="logo" src="https://chuck3774bucket.s3.us-east-2.amazonaws.com/2.png"/>
+        <Col >
+        <img class="d-block m-auto" src="https://chuck3774bucket.s3.us-east-2.amazonaws.com/2.png"/>
          </Col>
-        <Col sm={2}>
-        </Col>
           </Row>
-       </Container>
 
-          <div className="header">
+          <Row>
+            <Col>
 
           <Nav
           style={{
@@ -150,37 +145,32 @@ class App extends React.Component {
           className="justify-content-center">
     <Nav.Link
        style={{
-           color: '#A11100'
-       }}
+         color: '#A11100'
+        }}
         name="feed"
         onClick={(e) => this.changeView(e)}>Feed</Nav.Link>
       <Nav.Link
       style={{
         color: '#A11100'
-    }}
-        name="friends"
-        onClick={(e) => this.changeView(e)}>Friends</Nav.Link>
+      }}
+      name="friends"
+      onClick={(e) => this.changeView(e)}>Friends</Nav.Link>
       <Nav.Link
       style={{
         color: '#A11100'
-    }}
-        name="notifications"
-        onClick={(e) => this.changeView(e)}>Notifications</Nav.Link>
+      }}
+      name="notifications"
+      onClick={(e) => this.changeView(e)}>Notifications</Nav.Link>
        </Nav>
 
+            </Col>
+          </Row>
+    <Row>
 
-
-
-
-
-
-
-</div>
-
-      <div className="main">
       {this.renderView()}
-      </div>
-     </div>
+
+    </Row>
+    </Container>
 
     );
   }
