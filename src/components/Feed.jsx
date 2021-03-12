@@ -62,12 +62,57 @@ const Feed = (props) => {
 }
 
 return (
-  <div className="feed">
-    <Container>
-      <Row>
-    <Col xs={5}></Col>
-    <Col xs={7}>
+    <Col>
 
+      <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Create a Signal</Modal.Title>
+          </Modal.Header>
+          <Form>
+            <Form.Group controlId="restaurant">
+              <Form.Label>Restaurant</Form.Label>
+              <Form.Control as="select" onChange={(e) => setRes(e.target.value)}>
+                <option>Select Restaurant...</option>
+               {props.restaurants.map((resObj) => {
+                 return (
+                    <option>{`${resObj.name}, ${resObj.city}, ${resObj.state}`}</option>
+                 )
+               })}
+              </Form.Control>
+            </Form.Group>
+            <Form.Group controlId="invites">
+              <Form.Label>Invite friends</Form.Label>
+              <Form.Control as="select" onChange={(e) => setInvite(e.target.value)}>
+                <option>Invite friends to join...</option>
+                <option>All Friends</option>
+               {props.groups.map((groupObj) => {
+                 return (
+                    <option>{groupObj.groupName}</option>
+                 )
+               })}
+               <option>No Invites</option>
+              </Form.Control>
+            </Form.Group>
+            <Form.Group controlId="join">
+              <Form.Label>Recommendations</Form.Label>
+              <Form.Control as="select" onChange={(e) => setRec(e.target.value)}>
+              <option>Looking for Recommendations...</option>
+              <option>Yes</option>
+               <option>No</option>
+              </Form.Control>
+            </Form.Group>
+
+            <img
+            className="modalButton"
+             onClick={(e) => submit(e)}
+           src="https://chuck3774bucket.s3.us-east-2.amazonaws.com/Screen+Shot+2021-02-16+at+1.01.29+PM.png"/>
+
+
+          </Form>
+        </Modal>
+      <Row>
+
+    <Col>
     <Button
     style={{
       marginTop: '20px',
@@ -78,65 +123,17 @@ return (
     }}
     variant='primary' onClick={handleShow}>Create Signal</Button>
     </Col>
-    <Col xs={2}></Col>
       </Row>
-    </Container>
-    <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Create a Signal</Modal.Title>
-        </Modal.Header>
-        <Form>
-          <Form.Group controlId="restaurant">
-            <Form.Label>Restaurant</Form.Label>
-            <Form.Control as="select" onChange={(e) => setRes(e.target.value)}>
-              <option>Select Restaurant...</option>
-             {props.restaurants.map((resObj) => {
-               return (
-                  <option>{`${resObj.name}, ${resObj.city}, ${resObj.state}`}</option>
-               )
-             })}
-            </Form.Control>
-          </Form.Group>
-          <Form.Group controlId="invites">
-            <Form.Label>Invite friends</Form.Label>
-            <Form.Control as="select" onChange={(e) => setInvite(e.target.value)}>
-              <option>Invite friends to join...</option>
-              <option>All Friends</option>
-             {props.groups.map((groupObj) => {
-               return (
-                  <option>{groupObj.groupName}</option>
-               )
-             })}
-             <option>No Invites</option>
-            </Form.Control>
-          </Form.Group>
-          <Form.Group controlId="join">
-            <Form.Label>Recommendations</Form.Label>
-            <Form.Control as="select" onChange={(e) => setRec(e.target.value)}>
-            <option>Looking for Recommendations...</option>
-            <option>Yes</option>
-             <option>No</option>
-            </Form.Control>
-          </Form.Group>
 
-          <img
-          className="modalButton"
-           onClick={(e) => submit(e)}
-         src="https://chuck3774bucket.s3.us-east-2.amazonaws.com/Screen+Shot+2021-02-16+at+1.01.29+PM.png"/>
-
-
-        </Form>
-      </Modal>
-
-      <Container>
+<Row>
         <Col>
 
       {
       props.signals.map((signalObj, i) => {
         return (
-        <Card style={{
+        <Card
+        style={{
           borderColor: '#A11100',
-          marginLeft: '210px',
           width: '30rem'}}>
           <Card.Body>
             <Card.Title style={{
@@ -222,10 +219,13 @@ return (
       }
         </Col>
 
-      </Container>
+</Row>
+    </Col>
 
 
-  </div>
+
+
+
 )
 }
 
