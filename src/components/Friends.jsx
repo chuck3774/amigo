@@ -87,68 +87,36 @@ props.allUsers.map((allUser) => {
 })
 
 return (
-  <div className="friends">
-    <Container>
-<Row>
-  <Col xs={4}>
+ <Col>
+       <Modal show={show} onHide={handleClose}>
+           <Modal.Header closeButton>
+             <Modal.Title>Add a friend</Modal.Title>
+           </Modal.Header>
+           <Form>
+             <Form.Group controlId="friends">
+               <Form.Label>Users</Form.Label>
+               <Form.Control as="select" onChange={(e) => setNewFriend(e.target.value)}>
+                 <option>Select User to add...</option>
+                {
+               filteredUsers.map((friendObj) => {
+                  return (
+                     <option>{`@${friendObj.userName}, ${friendObj.firstName} ${friendObj.lastName}`}</option>
+                  )
+                })}
+               </Form.Control>
+             </Form.Group>
 
-  </Col>
-  <Col xs={8}>
-
-    <Button variant='primary' onClick={handleShow}
-     style={{
-      marginTop: '20px',
-      marginBottom: '10px',
-      backgroundColor: '#A11100',
-      borderWidth: '3px',
-      borderColor: '#E9A637'
-    }}
-    >Add a friend</Button>
-    <Button variant='primary' onClick={handleShow2}
-     style={{
-      marginTop: '20px',
-      marginBottom: '10px',
-      backgroundColor: '#A11100',
-      borderWidth: '3px',
-      borderColor: '#E9A637',
-      marginLeft: '20px'
-    }}
-    >Add a group</Button>
-  </Col>
-  <Col xs={2}></Col>
-
-</Row>
-
-    </Container>
-    <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add a friend</Modal.Title>
-        </Modal.Header>
-        <Form>
-          <Form.Group controlId="friends">
-            <Form.Label>Users</Form.Label>
-            <Form.Control as="select" onChange={(e) => setNewFriend(e.target.value)}>
-              <option>Select User to add...</option>
-             {
-            filteredUsers.map((friendObj) => {
-               return (
-                  <option>{`@${friendObj.userName}, ${friendObj.firstName} ${friendObj.lastName}`}</option>
-               )
-             })}
-            </Form.Control>
-          </Form.Group>
-
-          <Button variant="primary" onClick={(e) => submit(e)}
-          style={{
-            backgroundColor: '#A11100',
-            borderWidth: '3px',
-            borderColor: '#E9A637',
-            marginLeft: '170px',
-            marginBottom: '10px'
-          }}
-          >Add new friend!</Button>
-        </Form>
-      </Modal>
+             <Button variant="primary" onClick={(e) => submit(e)}
+             style={{
+               backgroundColor: '#A11100',
+               borderWidth: '3px',
+               borderColor: '#E9A637',
+               marginLeft: '170px',
+               marginBottom: '10px'
+             }}
+             >Add new friend!</Button>
+           </Form>
+         </Modal>
       <Modal show={show2} onHide={handleClose2}>
         <Modal.Header closeButton>
           <Modal.Title>Add a Group</Modal.Title>
@@ -175,11 +143,42 @@ return (
             }}
           >Add new group!</Button>
       </Modal>
+<Row>
 
 
+<div class="d-block m-auto" >
+    <Button variant='primary' onClick={handleShow}
+     style={{
+      marginTop: '20px',
+      marginBottom: '10px',
+      backgroundColor: '#A11100',
+      borderWidth: '3px',
+      borderColor: '#E9A637'
+    }}
+    >Add a friend</Button>
+    <Button variant='primary' onClick={handleShow2}
+     style={{
+      marginTop: '20px',
+      marginBottom: '10px',
+      backgroundColor: '#A11100',
+      borderWidth: '3px',
+      borderColor: '#E9A637',
+      marginLeft: '20px'
+    }}
+    >Add a group</Button>
+
+</div>
+
+
+
+</Row>
+
+
+<Row>
         <Card style={{
           borderColor: '#A11100',
-          marginLeft: '400px',
+          display: 'block',
+          margin: 'auto',
           width: '22rem'}}>
           <Card.Body>
             <Row>
@@ -259,9 +258,12 @@ return (
           </Card.Body>
         </Card>
 
+</Row>
+ </Col>
 
 
-  </div>
+
+
 
 )
 }
