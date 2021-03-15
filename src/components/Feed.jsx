@@ -112,9 +112,10 @@ return (
         </Modal>
       <Row>
 
-    <Col>
     <Button
     style={{
+      display: 'block',
+      margin: 'auto',
       marginTop: '20px',
       marginBottom: '10px',
       backgroundColor: '#A11100',
@@ -122,17 +123,18 @@ return (
       borderColor: '#E9A637'
     }}
     variant='primary' onClick={handleShow}>Create Signal</Button>
-    </Col>
       </Row>
 
 <Row>
-        <Col>
+
 
       {
       props.signals.map((signalObj, i) => {
         return (
         <Card
         style={{
+          display: 'block',
+          margin: 'auto',
           borderColor: '#A11100',
           width: '30rem'}}>
           <Card.Body>
@@ -217,11 +219,10 @@ return (
         )
       })
       }
-        </Col>
 
 </Row>
-    </Col>
 
+</Col>
 
 
 

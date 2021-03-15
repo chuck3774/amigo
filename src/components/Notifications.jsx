@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Accordion, Button, Card, Row, Modal, Form, ListGroup } from 'react-bootstrap';
+import { Accordion, Button, Card, Row, Modal, Form, ListGroup, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 const Notifications = (props) => {
@@ -43,7 +43,8 @@ const Notifications = (props) => {
 
   }
   return (
-    <div className="notifications">
+    <Col>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Want to join?</Modal.Title>
@@ -93,12 +94,14 @@ const Notifications = (props) => {
         </Form>
       </Modal>
 
+    <Row>
 
           <Card style={{
+            display: 'block',
+            margin: 'auto',
             marginTop: '20px',
             width: '50rem',
-            borderColor: '#A11100',
-            marginLeft: '230px'
+            borderColor: '#A11100'
             }}>
             <Card.Body>
           <ListGroup>
@@ -113,10 +116,11 @@ const Notifications = (props) => {
                   }}>{`@${notObj.fromUser} would like you to join them at ${notObj.join}!`}
                  <Button variant='primary' onClick={handleShow}
                  style={{
+                  float: 'right',
                   backgroundColor: '#E9A637',
                   borderWidth: '3px',
                   borderColor: '#A11100',
-                  float: 'right'
+
                }}
                  >Respond</Button>
                 </ListGroup.Item> :
@@ -126,10 +130,11 @@ const Notifications = (props) => {
                   }}>{`@${notObj.fromUser} would like recommendations for ${notObj.recommendation}!`}
                 <Button variant='primary' onClick={handleShow2}
                 style={{
+                  float: 'right',
                   backgroundColor: '#E9A637',
                   borderWidth: '3px',
                   borderColor: '#A11100',
-                 marginLeft: '130px'
+
                }}
                 >Respond</Button>
                 </ListGroup.Item>
@@ -140,10 +145,12 @@ const Notifications = (props) => {
             </ListGroup>
             </Card.Body>
           </Card>
+    </Row>
+    </Col>
 
 
 
-    </div>
+
 
   )
 }
